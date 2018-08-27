@@ -23,6 +23,7 @@ export class ExamplesComponent implements OnInit, OnDestroy {
     { link: 'todos', label: 'anms.examples.menu.todos' },
     { link: 'stock-market', label: 'anms.examples.menu.stocks' },
     { link: 'theming', label: 'anms.examples.menu.theming' },
+    { link: 'form', label: 'anms.examples.menu.form' },
     { link: 'authenticated', label: 'anms.examples.menu.auth' }
   ];
 
