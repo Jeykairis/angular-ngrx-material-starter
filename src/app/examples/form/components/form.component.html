@@ -4,7 +4,7 @@
       <h1 class="main-heading">{{ 'anms.examples.form.title' | translate }}</h1>
     </div>
   </div>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form">
     <div class="row">
       <div class="col-md-6" [ngClass]="routeAnimationsElements">
         <h2>Contact form </h2>
@@ -66,8 +66,8 @@
             </mat-form-field>
             <mat-form-field *ngIf="form.get('address')?.get('country').value;" class="col-6" formGroupName="address">
               <mat-select placeholder="State" formControlName="state" required>
-                <mat-option *ngFor="let country of countries" [value]="country">
-                  {{country}}
+                <mat-option *ngFor="let state of states" [value]="state">
+                  {{state}}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="form.get('address')?.get('state').invalid">State is required</mat-error>
@@ -76,8 +76,8 @@
           <div class="row" *ngIf="form.get('address')?.get('state').value">
             <mat-form-field class="col-8" formGroupName="address">
               <mat-select placeholder="City" formControlName="city" required>
-                <mat-option *ngFor="let country of countries" [value]="country">
-                  {{country}}
+                <mat-option *ngFor="let city of cities" [value]="city">
+                  {{city}}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="form.get('address')?.get('state').invalid">State is required</mat-error>
@@ -93,7 +93,7 @@
               <mat-error *ngIf="form.get('address')?.get('street').invalid">Street is required</mat-error>
             </mat-form-field>
             <mat-form-field class="col-2" formGroupName="address">
-              <input matInput placeholder="n°" formControlName="numero" required>
+              <input matInput type="number" placeholder="n°" formControlName="numero" required>
               <mat-error *ngIf="form.get('address')?.get('numero').invalid">n° is required</mat-error>
             </mat-form-field>
           </div>
@@ -102,14 +102,14 @@
           <p>You've to want a gift to see more information.</p>
         </ng-template>
         <div class="row buttons">
-          <div class="col">
+          <div class="col" [ngClass]="routeAnimationsElements">
             <button mat-raised-button color="warn" (click)="reset()">Reset</button>
           </div>
-          <div class="col">
+          <div class="col" [ngClass]="routeAnimationsElements">
             <button mat-raised-button color="secondary" (click)="save()">save</button>
           </div>
-          <div class="col">
-            <button mat-raised-button color="primary" [disabled]="form.invalid">Send</button>
+          <div class="col" [ngClass]="routeAnimationsElements">
+            <button mat-raised-button color="primary" [disabled]="form.invalid" (click)=onSubmit()>Send</button>
           </div>
         </div>
       </div>
